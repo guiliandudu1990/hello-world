@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>表单</title>
+    <script>
+        var i = 0;
+        function tableAddRow(obj){
+            var user = document.getElementById("name").value;
+            var age = document.getElementById("age").value;
+            var educ = document.getElementById("education").value;
+            if(user == ""){
+                alert("用户名不能为空!");
+                return ;
+            } else if(age == ""){
+                alert("年龄不能为空!");
+                return;
+            } else if(educ == "") {
+                alert("学历不能为空");
+                return;
+            }else{
+                var newTr = document.getElementById(obj).insertRow(); //插入新行
+                var newTd0 = newTr.insertCell();   //为行插入单元格
+                var newTd1 = newTr.insertCell();
+                var newTd2 = newTr.insertCell();
+                var newTd3 = newTr.insertCell();
+                newTd0.innerHTML = ++i;
+                newTd1.innerHTML = user;//为单元格加入内容
+                newTd2.innerHTML = age;
+                newTd3.innerHTML = educ;
+                }
+        }
+        function init(){
+            document.getElementById("name").value = "";
+            document.getElementById("age").value = "";
+            document.getElementById("education").value = "";
+        }
+    </script>
+</head>
+<body>
+<div>
+    <div>
+        <fieldset style="text-align: center">
+            <legend>输入：</legend>
+            <p>姓名：<input type="text" name="username" placeholder="请输入姓名：" id="name"></p>
+            <p>年龄：<input type="text" name="userage" placeholder="请输入年龄：" id="age"></p>
+            <p>学历：<input type="text" name="usereducation" placeholder="请输入学历：" id="education"></p>
+            <input type="submit" value="确定" onclick="tableAddRow('myTable')">
+            <input type="button" value="重置" onclick="init()">;
+        </fieldset>
+    </div>
+    <div>
+        <fieldset style="text-align: center">
+            <legend>显示：</legend>
+            <table  style="text-align: center;" width="100%" id="myTable">
+                <tr>
+                    <th>No</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>学历</th>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+</div>
+</body>
+</html>
